@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MirokuLearning.Business.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,12 @@ namespace MirokuLearning.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IItemServices ItemServices;
+        public HomeController(IItemServices itemServices)
+        {
+            ItemServices = itemServices;
+        }
+
         public ActionResult Index()
         {
             return View();

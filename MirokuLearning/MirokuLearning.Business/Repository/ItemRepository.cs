@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MirokuLearning.Business.Repository
 {
-    public interface IItemRepository : IRepository<Item> 
+    public interface IItemRepository : IRepository<Item>
     {
 
     }

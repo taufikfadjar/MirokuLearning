@@ -1,5 +1,6 @@
 namespace MirokuLearning.Business.Migrations
 {
+    using Bogus;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,24 +10,30 @@ namespace MirokuLearning.Business.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MirokuLearning.Business.MirokuLearningContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var codeIds = 0;
+            var itemGenerator = new Faker<Item>()
+                .RuleFor(o => o.ItemDescription, f => f.Commerce.ProductAdjective() + " " + f.Commerce.Color())
+                .RuleFor(o => o.ItemName, f => f.Commerce.ProductName())
+                .RuleFor(o => o.ItemTotalQty, f => 0)
+                .RuleFor(o => o.ItemCode, f => codeIds++ + "" + f.Random.AlphaNumeric(4).ToUpper());
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var items = itemGenerator.Generate(100).ToList();
+
+            if (!context.Items.Any())
+            {
+                foreach (var item in items)
+                {
+                    context.Items.Add(item);
+                }
+
+                context.SaveChanges();
+            }
         }
     }
 }

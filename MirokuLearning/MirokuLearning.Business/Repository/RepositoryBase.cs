@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MirokuLearning.Business.Repository
 {
-    public class RepositoryBase<T> : IRepository<T> where T: class
+    public class RepositoryBase<T> where T:class 
     {
         private DbSet<T> dbSet;
         private DbContext dbContext;
@@ -34,9 +34,16 @@ namespace MirokuLearning.Business.Repository
             return dbSet.Where(filter).ToList();
         }
 
-        public async Task<int> Count(Expression<Func<T, bool>> filter)
+        public async Task<int> Count(Expression<Func<T, bool>> filter = null)
         {
-            return await dbSet.CountAsync(filter);
+            if (filter != null)
+            {
+                return await dbSet.CountAsync(filter);
+            }
+            else
+            {
+                return await dbSet.CountAsync();
+            }
         }
 
         public async Task<bool> Any(Expression<Func<T, bool>> filter)
@@ -49,10 +56,36 @@ namespace MirokuLearning.Business.Repository
             return await dbSet.FirstOrDefaultAsync(filter);
         }
 
-        public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter)
+        public async Task<List<T>> GetListAsync<TKey>(Expression<Func<T, bool>> filter = null, 
+            Expression<Func<T, TKey>> orderingKey = null, int total = 0, int page = 0, int pageSize = 0)
         {
-            return await dbSet.AsQueryable().Where(filter).ToListAsync();
+            var query = dbSet.AsQueryable();
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if(orderingKey != null)
+            {
+                query = query.OrderBy(orderingKey);
+            }
+
+            var skip = pageSize * (page - 1);
+            var canPage = skip < total;
+
+            if (canPage)
+            {
+               query = query.Skip(skip);
+               query = query.Take(pageSize);
+                
+                return await query.ToListAsync();
+            }else
+            {
+                return new List<T>();
+            }
         }
+        
 
         public void Add(T entity)
         {

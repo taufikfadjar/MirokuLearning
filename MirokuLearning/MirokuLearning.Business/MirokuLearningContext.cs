@@ -3,6 +3,7 @@ namespace MirokuLearning.Business
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Linq;
 
@@ -42,6 +43,7 @@ namespace MirokuLearning.Business
     public class Item
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ItemId { get; set; }
         public string ItemCode { get; set; }
         public string ItemName { get; set; }
@@ -57,6 +59,7 @@ namespace MirokuLearning.Business
         }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long InstructionInOutId { get; set; }
         public string TypeInstruction { get; set; }
         public virtual ICollection<TransactionInOut> TransactionInOuts { get; set; }
@@ -65,6 +68,7 @@ namespace MirokuLearning.Business
     public class TransactionInOut
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long TransactionInOutId { get; set; }
         public virtual Item Item { get; set; }
         public virtual InstructionInOut InstructionInOut { get; set; }

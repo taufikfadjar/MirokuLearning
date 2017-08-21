@@ -15,7 +15,8 @@ namespace MirokuLearning.Business.Repository
         T Get(Func<T, bool> filter);
         Task<T> GetAsync(Expression<Func<T, bool>> filter);
         List<T> GetList(Func<T, bool> filter);
-        Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter);
+        Task<List<T>> GetListAsync<TKey>(Expression<Func<T, bool>> filter = null,
+            Expression<Func<T, TKey>> orderingKey = null, int total = 0, int page = 0, int pageSize = 0);
         IQueryable<T> GetQueryable();
         void Remove(T entity);
         void Update(T entity);
