@@ -1,4 +1,6 @@
-﻿using MirokuLearning.Business.Repository;
+﻿
+using MirokuLearning.EF;
+using MirokuLearning.EF.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,8 @@ namespace MirokuLearning.Business.Core
 {
     public interface IItemServices
     {
-        Task<List<Item>> GetItems<TKey>(Expression<Func<Item, bool>> filter, Expression<Func<Item, TKey>> orderingKey, int page, int pagesize);
+        Task<List<Z>> GetItems<Z>(Expression<Func<Item, bool>> filter = null,
+            Expression<Func<Item, object>> orderingKey = null, int page = 0, int pagesize = 0);
     }
 
     public class ItemServices : IItemServices
@@ -24,10 +27,11 @@ namespace MirokuLearning.Business.Core
             UnitOfWork = unitofWork;
         }
 
-        public async Task<List<Item>> GetItems<TKey>(Expression<Func<Item, bool>> filter, Expression<Func<Item, TKey>> orderingKey, int page, int pagesize)
+        public async Task<List<Z>> GetItems<Z>(Expression<Func<Item, bool>> filter = null, 
+            Expression<Func<Item,object>> orderingKey = null, int page = 0 , int pagesize = 0)
         {
             int total =  await ItemRepository.Count(filter);
-            return await ItemRepository.GetListAsync(filter, orderingKey, total, page, pagesize);
+            return await ItemRepository.GetListAsync<Z>(filter, orderingKey, total, page, pagesize);
         }
     }
 }

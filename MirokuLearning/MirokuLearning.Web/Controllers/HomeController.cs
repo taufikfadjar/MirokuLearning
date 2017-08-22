@@ -1,4 +1,5 @@
-﻿using MirokuLearning.Business.Core;
+﻿using MirokuLearning.AppModel.Views;
+using MirokuLearning.Business.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace MirokuLearning.Web.Controllers
             ItemServices = itemServices;
         }
 
-        public ActionResult Index()
+        public async System.Threading.Tasks.Task<ActionResult> Index()
         {
+            var test = await ItemServices.GetItems<ItemViewModel>(x=>x.ItemTotalQty == 0, x => x.ItemName, 1, 50);
             return View();
         }
+        
 
         public ActionResult About()
         {

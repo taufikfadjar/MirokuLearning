@@ -1,4 +1,4 @@
-﻿using MirokuLearning.Business.Helper;
+﻿using MirokuLearning.EF.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

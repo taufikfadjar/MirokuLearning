@@ -1,10 +1,13 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
-using MirokuLearning.Business.Repository;
 using System.Data.Entity;
 using MirokuLearning.Business;
 using MirokuLearning.Business.Core;
+using AutoMapper;
+using MirokuLearning.AppModel.Mapper;
+using MirokuLearning.EF;
+using MirokuLearning.EF.Repository;
 
 namespace MirokuLearning.Web
 {
@@ -24,6 +27,10 @@ namespace MirokuLearning.Web
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IItemRepository, ItemRepository>();
             container.RegisterType<IItemServices, ItemServices>();
+
+            AutoMapperConfig.ConfigureAutoMapper();
+
+            container.RegisterInstance<IMapper>(AutoMapperConfig.Mapper);
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -164,7 +164,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -216,9 +216,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MirokuLearning.AppModel\MirokuLearning.AppModel.csproj">
+      <Project>{A8356C4B-8A18-4193-B29D-9F7C2F9E6F34}</Project>
+      <Name>MirokuLearning.AppModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MirokuLearning.Business\MirokuLearning.Business.csproj">
       <Project>{ddc34c60-e458-4df2-8e01-978061c62bab}</Project>
       <Name>MirokuLearning.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MirokuLearning.EF\MirokuLearning.EF.csproj">
+      <Project>{57DAD9D6-A648-4E3F-8B7C-5CBDFC0019BF}</Project>
+      <Name>MirokuLearning.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
