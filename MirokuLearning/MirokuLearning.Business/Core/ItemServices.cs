@@ -19,6 +19,8 @@ namespace MirokuLearning.Business.Core
         Task<int> GetTotal(Expression<Func<Item, bool>> filter = null);
         Task CreateItem<Z>(Z itemViewModel);
         Task<Z> GetItem<Z>(Expression<Func<Item, bool>> filter = null);
+        Task<List<object>> GetItems<Z>(Expression<Func<Item, bool>> filter = null,
+            Expression<Func<Item, object>> orderingKey = null, string fields = null, int page = 0, int pagesize = 0);
     }
 
     public class ItemServices : IItemServices
@@ -39,6 +41,20 @@ namespace MirokuLearning.Business.Core
         {
             int total =  await ItemRepository.Count(filter);
             return await ItemRepository.GetListAsync<Z>(filter, orderingKey, total, page, pagesize);
+        }
+
+        public async Task<List<object>> GetItems<Z>(Expression<Func<Item, bool>> filter = null,
+            Expression<Func<Item, object>> orderingKey = null, string fields = null, int page = 0, int pagesize = 0)
+        {
+
+            List<string> lstFields = new List<string>();
+            if (fields != null)
+            {
+                lstFields = fields.ToLower().Split(',').ToList();
+            }
+
+            int total = await ItemRepository.Count(filter);
+            return await ItemRepository.GetListAsync<Z>(filter, orderingKey, lstFields,  total, page, pagesize);
         }
 
         public async Task<Z> GetItem<Z>(Expression<Func<Item, bool>> filter = null)

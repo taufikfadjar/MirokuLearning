@@ -20,9 +20,10 @@ namespace MirokuLearning.AppApi.Controllers
         }
 
         // GET: api/Items
-        public IEnumerable<string> Get()
+        [Route("")]
+        public async Task<IEnumerable<object>> GetItems(string fields = null)
         {
-            return new string[] { "value1", "value2" };
+            return await ItemServices.GetItems<ItemViewModel>(null, x=>x.ItemName, fields,1,100);
         }
 
         // GET: api/Items/5
@@ -48,6 +49,7 @@ namespace MirokuLearning.AppApi.Controllers
         // DELETE: api/Items/5
         public void Delete(int id)
         {
+
         }
 
         [Route("count")]
@@ -55,7 +57,7 @@ namespace MirokuLearning.AppApi.Controllers
         public async Task<IHttpActionResult> GetTotal()
         {
             var total = await ItemServices.GetTotal();
-            return Ok(new { total = total });
+            return Ok(new { Total = total });
         }
     }
 }

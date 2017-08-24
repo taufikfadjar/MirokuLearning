@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MirokuLearning.EF.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -87,7 +88,41 @@ namespace MirokuLearning.EF.Repository
             }
             else
             {
-                return new List<Z>();
+                return await query.ProjectTo<Z>(Mapper.ConfigurationProvider).ToListAsync();
+            }
+        }
+
+
+        public async Task<List<object>> GetListAsync<Z>(Expression<Func<T, bool>> filter = null,
+            Expression<Func<T, object>> orderingKey = null, List<string> lstFields = null,  int total = 0, int page = 0, int pageSize = 0)
+        {
+            var query = dbSet.AsQueryable();
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (orderingKey != null)
+            {
+                query = query.OrderBy(orderingKey);
+            }
+
+            var skip = pageSize * (page - 1);
+            var canPage = skip < total;
+
+            if (canPage)
+            {
+                query = query.Skip(skip);
+                query = query.Take(pageSize);
+
+                var data  = await query.ProjectTo<Z>(Mapper.ConfigurationProvider).ToListAsync();
+                return data.Select(i => HelperUtil.CreateShappedObject(i, lstFields)).ToList();
+            }
+            else
+            {
+                var data = await query.ProjectTo<Z>(Mapper.ConfigurationProvider).ToListAsync();
+                return data.Select(i => HelperUtil.CreateShappedObject(i, lstFields)).ToList();
             }
         }
 

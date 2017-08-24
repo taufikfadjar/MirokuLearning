@@ -18,6 +18,8 @@ namespace MirokuLearning.EF.Repository
         List<T> GetList(Func<T, bool> filter);
         Task<List<Z>> GetListAsync<Z>(Expression<Func<T, bool>> filter = null,
             Expression<Func<T, object>> orderingKey = null, int total = 0, int page = 0, int pageSize = 0);
+        Task<List<object>> GetListAsync<Z>(Expression<Func<T, bool>> filter = null,
+            Expression<Func<T, object>> orderingKey = null, List<string> lstFields = null, int total = 0, int page = 0, int pageSize = 0);
         IQueryable<T> GetQueryable();
         void Remove(T entity);
         void Update(T entity);
