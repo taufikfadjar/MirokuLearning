@@ -79,9 +79,9 @@
   <ItemGroup>
     <Compile Include="Helper\EFMigrator.cs" />
     <Compile Include="Helper\HelperMigration.cs" />
-    <Compile Include="Migrations\201708220419522_initial.cs" />
-    <Compile Include="Migrations\201708220419522_initial.Designer.cs">
-      <DependentUpon>201708220419522_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201708240620325_initial.cs" />
+    <Compile Include="Migrations\201708240620325_initial.Designer.cs">
+      <DependentUpon>201708240620325_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MirokuLearningContext.cs" />
@@ -99,8 +99,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708220419522_initial.resx">
-      <DependentUpon>201708220419522_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708240620325_initial.resx">
+      <DependentUpon>201708240620325_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

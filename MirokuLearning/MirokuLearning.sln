@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirokuLearning.AppModel", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirokuLearning.EF", "MirokuLearning.EF\MirokuLearning.EF.csproj", "{57DAD9D6-A648-4E3F-8B7C-5CBDFC0019BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirokuLearning.AppApi", "MirokuLearning.AppApi\MirokuLearning.AppApi.csproj", "{60AD98B6-AB01-4830-970E-D887A8C5FFC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirokuLearning.AppApi", "MirokuLearning.AppApi\MirokuLearning.AppApi.csproj", "{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,14 +63,14 @@ Global
 		{57DAD9D6-A648-4E3F-8B7C-5CBDFC0019BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57DAD9D6-A648-4E3F-8B7C-5CBDFC0019BF}.Release|x86.ActiveCfg = Release|Any CPU
 		{57DAD9D6-A648-4E3F-8B7C-5CBDFC0019BF}.Release|x86.Build.0 = Release|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Debug|x86.Build.0 = Debug|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Release|x86.ActiveCfg = Release|Any CPU
-		{60AD98B6-AB01-4830-970E-D887A8C5FFC9}.Release|x86.Build.0 = Release|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Debug|x86.Build.0 = Debug|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Release|x86.ActiveCfg = Release|Any CPU
+		{D92408E2-47E4-4CE3-B573-4E0C83AC07FC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

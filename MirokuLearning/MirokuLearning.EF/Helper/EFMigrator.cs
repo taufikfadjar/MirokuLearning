@@ -20,9 +20,9 @@ namespace MirokuLearning.EF.Helper
         {
             using (var dbIdentity = new MirokuLearningContext())
             {
-                var migration = new MirokuLearning.EF.Migrations.initial();
-                migration.Down();
-                dbIdentity.RunMigration(migration);
+                //var migration = new MirokuLearning.EF.Migrations.initial();
+                //migration.Down();
+                //dbIdentity.RunMigration(migration);
             }
         }
     }

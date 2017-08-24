@@ -1,4 +1,6 @@
-﻿using MirokuLearning.EF.Helper;
+﻿using FluentValidation.Mvc;
+using MirokuLearning.AppModel.Extension;
+using MirokuLearning.EF.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +18,19 @@ namespace MirokuLearning.Web
             UnityConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            ValidationConfiguration();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
             EFMigrator.Migrate();
+        }
+
+        private void ValidationConfiguration()
+        {
+            FluentValidationModelValidatorProvider.Configure(provider =>
+            {
+                provider.ValidatorFactory = new ValidatorFactory();
+            });
         }
     }
 }

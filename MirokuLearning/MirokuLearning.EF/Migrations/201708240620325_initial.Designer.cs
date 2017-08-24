@@ -13,7 +13,7 @@ namespace MirokuLearning.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201708220419522_initial"; }
+            get { return "201708240620325_initial"; }
         }
         
         string IMigrationMetadata.Source

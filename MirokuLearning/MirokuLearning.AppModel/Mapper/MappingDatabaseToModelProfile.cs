@@ -16,4 +16,12 @@ namespace MirokuLearning.AppModel.Mapper
             CreateMap<Item, ItemViewModel>();
         }
     }
- }
+
+    public class MappingAPIModelToDatabaseProfile : Profile
+    {
+        public MappingAPIModelToDatabaseProfile()
+        {
+            CreateMap<Item, APIViewModels.ItemViewModel>();
+        }
+    }
+}

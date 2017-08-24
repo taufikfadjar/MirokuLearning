@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace MirokuLearning.AppModel.Mapper
 {
-    public class AutoMapperConfig
+    public class AutoMapperWebApiConfig
     {
         public static IMapper Mapper;
         public static void ConfigureAutoMapper()
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<MappingModelToDatabaseProfile>();
-                cfg.AddProfile<MappingModeltoDatabaseProfile>();
-
+                cfg.AddProfile<MappingAPIModelToDatabaseProfile>();
+                cfg.AddProfile<MappingAPIModeltoDatabaseProfile>();
             });
 
             Mapper = config.CreateMapper();
