@@ -27,21 +27,24 @@ namespace MirokuLearning.AppApi.Controllers
         }
 
         // GET: api/Items/5
+        [HttpGet]
         public async System.Threading.Tasks.Task<ItemViewModel> Get(string id)
         {
             return await ItemServices.GetItem<ItemViewModel>(x => x.ItemCode == id);
         }
 
         // POST: api/Items
+        [HttpPost]
+        [Route("")]
         public async Task<IHttpActionResult> Post([FromBody]ItemViewModel item)
         {
             await ItemServices.CreateItem(item);
-
             return Ok();
             //return CreatedAtRoute("DefaultApi", new { id = article.ID }, article);
         }
 
         // PUT: api/Items/5
+        [HttpPut]
         public void Put(int id, [FromBody]string value)
         {
         }

@@ -21,6 +21,7 @@ namespace MirokuLearning.AppApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+
             EFMigrator.Migrate();
         }
     }

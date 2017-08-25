@@ -1,4 +1,5 @@
-﻿using MirokuLearning.AppApi.App_Start;
+﻿using FluentValidation.WebApi;
+using MirokuLearning.AppApi.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,12 @@ namespace MirokuLearning.AppApi
             var container = UnityConfiguration.Config();
             config.DependencyResolver = new UnityResolver(container);
 
+            config.Filters.Add(new ValidateModelStateFilter());
+
             config.Formatters.JsonFormatter.SupportedMediaTypes
             .Add(new MediaTypeHeaderValue("text/html"));
+
+            
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -28,6 +33,8 @@ namespace MirokuLearning.AppApi
                 defaults: new { id = RouteParameter.Optional }
 
             );
+
+            FluentValidationModelValidatorProvider.Configure(config);
         }
     }
 }

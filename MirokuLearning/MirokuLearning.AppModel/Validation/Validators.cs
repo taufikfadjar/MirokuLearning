@@ -17,4 +17,14 @@ namespace MirokuLearning.AppModel.Validation
             RuleFor(x => x.ItemName).NotEmpty().Length(1, 75);
         }
     }
+
+    public class ItemAPIViewModelValidator : AbstractValidator<APIViewModels.ItemViewModel>
+    {
+        public ItemAPIViewModelValidator()
+        {
+            RuleFor(x => x.ItemCode).NotEmpty().Length(4, 7);
+            RuleFor(x => x.ItemDescription).NotEmpty().Length(5, 250);
+            RuleFor(x => x.ItemName).NotEmpty().Length(1, 75);
+        }
+    }
 }
